@@ -6,7 +6,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
     colorBox: {
-      
+
         width: props => props.copied ? "100%" : "20%",
         height: props => props.copied ? "100%" : props.showLink ? "25%" : "56%",
         margin: " 0 auto",
@@ -56,7 +56,7 @@ const styles = {
         lineHeight: "30px",
         opacity: "0"
     },
-    copyOverlay:{
+    copyOverlay: {
         opacity: "0",
         zIndex: "0",
         width: "100%",
@@ -80,6 +80,7 @@ const ColorBox = (props) => {
 
 
     }
+    
     const { name, background, paletteId, id, showLink, classes } = props;
     const isDark = chroma(background).luminance() <= 0.08;
     const isLight = chroma(background).luminance() >= 0.6
@@ -98,13 +99,13 @@ const ColorBox = (props) => {
                 <button className={classes.copyButton}>copy</button>
                 <div className='palette__color-box-footer'>
                     <em className={classes.colorName}>{name}</em>
-                  {showLink &&(
-                    <Link to={`/palette/${paletteId}/${id}`} onClick={e => e.stopPropagation()}>
+                    {showLink && (
+                        <Link to={`/palette/${paletteId}/${id}`} onClick={e => e.stopPropagation()}>
                             <span className={classes.seeMore}>more</span>
                         </Link>
-                  )}
-                        
-                   
+                    )}
+
+
 
 
                 </div>

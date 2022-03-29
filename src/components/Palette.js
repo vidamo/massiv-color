@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ColorBox from './ColorBox';
 import Navbar from './Navbar';
 import '../palette.scss';
-import { palette } from '@mui/system';
+// import { palette } from '@mui/system';
 import PaletteFooter from './PaletteFooter';
 
 
@@ -15,15 +15,12 @@ const Palette = (props) => {
         setLevel(level);
     }
     const changeFormat = val => {
-
         setFormat(val);
-
 
     };
 
 
     const colorBoxes = props.palette.colors[level].map(color => {
-        // console.log(format)
 
         return [
             <ColorBox
@@ -35,9 +32,12 @@ const Palette = (props) => {
                 showLink={true}
 
 
+
+
             />
 
         ]
+
 
     })
 
