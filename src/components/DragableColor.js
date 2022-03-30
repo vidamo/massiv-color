@@ -36,7 +36,7 @@ const styles = {
         justifyContent: "space-between",
 
     },
-    deleteIcon: 
+    deleteIcon: {
         transition: "all 0.3s ease-in-out"
     }
 }
