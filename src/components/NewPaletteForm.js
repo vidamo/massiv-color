@@ -68,6 +68,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 
+
 const NewPaletteForm = (props) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -81,6 +82,10 @@ const NewPaletteForm = (props) => {
     }
   )
 
+  const removeColor = (colorName) => {
+    setColors(colors.filter(color => color.name !== colorName))
+
+  }
 
 
   const handleSubmit = () => {
@@ -96,7 +101,7 @@ const NewPaletteForm = (props) => {
 
     props.savePalette(newPalette);
     props.history.push("/");
-   
+
   }
 
   const handleDrawerOpen = () => {
@@ -215,7 +220,7 @@ const NewPaletteForm = (props) => {
         <DrawerHeader />
         <div className='newpalette-contain'>
           {colors.map(color => (
-            <DragableColor color={color.color} name={color.name} />
+            <DragableColor key={color.name} handleClick={() => removeColor(color.name)} color={color.color} name={color.name} />
           ))}
         </div>
 
