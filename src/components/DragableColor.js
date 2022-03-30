@@ -1,10 +1,12 @@
 import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
+import DeleteIcon from '@mui/icons-material/Delete';
 
-const styles={
-    root:{
-        height:"100px",
-        width:"100px",
+
+const styles = {
+    root: {
+        height: "100px",
+        width: "100px",
         width: props => props.copied ? "100%" : "20%",
         height: props => props.copied ? "100%" : props.showLink ? "25%" : "56%",
         margin: " 0 auto",
@@ -15,16 +17,45 @@ const styles={
         cursor: "pointer",
         position: "relative",
         transition: "0.3s",
+        "&:hover svg": {
+            color: "white",
+            transform:"scale(1.5)"
+        }
+    },
+    boxContent: {
+        position: "absolute",
+        width: "100%",
+        left: "0",
+        bottom: "0",
+        padding: "10px",
+        color: "rgba(0,0,0,.5)",
+        letterSpacing: "1px",
+        textTransform: "uppercase",
+        fontSize: "12px",
+        display: "flex",
+        justifyContent: "space-between",
+
+    },
+    deleteIcon: 
+        transition: "all 0.3s ease-in-out"
     }
 }
 
 const DragableColor = (props) => {
+    const { classes } = props;
     return (
-        <div className={props.classes.root} style={{ backgroundColor: props.color }}>
-            {props.name}
+        <div className={classes.root} style={{ backgroundColor: props.color }}>
+            <div className={classes.boxContent}>
+                <span> {props.name}  </span>
+                <DeleteIcon className={classes.deleteIcon} />
+
+            </div>
+
+
+
         </div>
     )
 
 }
 
-export default withStyles(styles) (DragableColor);
+export default withStyles(styles)(DragableColor);
