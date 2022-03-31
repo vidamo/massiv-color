@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Drawer } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -71,10 +72,15 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 const NewPaletteForm = (props) => {
+  const defaultProps = {
+    maxColors: 20
+  }
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [currentColor, setCurrentColor] = useState("teal");
-  const [colors, setColors] = useState([]);
+  const [colors, setColors] = useState(props.palettes[0].colors);
+  const paletteIsFull = colors.length >= defaultProps.maxColors;
+
 
   const [formInfo, setFormInfo] = useState(
     {
@@ -87,14 +93,22 @@ const NewPaletteForm = (props) => {
     setColors(colors.filter(color => color.name !== colorName))
 
   }
-  const onSortEnd = (e) =>{
-    var newTodos = arrayMove(colors, e.oldIndex, e.newIndex )
+  const onSortEnd = (e) => {
+    var newTodos = arrayMove(colors, e.oldIndex, e.newIndex)
     setColors(newTodos)
   };
+  const clearColors = () => {
+    setColors([]);
+  }
+  const addRandomColor = () => {
+    const allColors = props.palettes.map(p => p.colors).flat();
+    var rand = Math.floor(Math.random() * allColors.length);
+    const randomColor = allColors(rand);
+    setColors([...colors, randomColor]);
 
+  }
 
   const handleSubmit = () => {
-    console.log('sss')
 
     let newName = formInfo.newPaletteName;
     const newPalette = {
@@ -172,6 +186,9 @@ const NewPaletteForm = (props) => {
           <ValidatorForm onSubmit={handleSubmit}>
             <TextValidator name="newPaletteName" label="palette name" value={formInfo.newPaletteName} onChange={handleChange} />
             <Button variant="contained" color="primary" type='submit'>save palette</Button>
+            <Link to='/'>
+              <Button variant='contained' color='secondary'>Go Back</Button>
+            </Link>
 
           </ValidatorForm>
 
@@ -203,8 +220,8 @@ const NewPaletteForm = (props) => {
 
         </Typography>
 
-        <Button variant="contained" color="secondary"> clear palette </Button>
-        <Button variant="contained" color="primary"> Random color  </Button>
+        <Button variant="contained" color="secondary" onClick={clearColors}> clear palette </Button>
+        <Button variant="contained" color="primary" onClick={addRandomColor}> disabled={paletteIsFull} Random color  </Button>
 
         <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor} />
         <ValidatorForm onSubmit={addNewColor}>
@@ -216,7 +233,15 @@ const NewPaletteForm = (props) => {
             errorMessages={['this field is required', 'color name must be unique!']}
           />
 
-          <Button type="submit" variant="contained" color="primary" style={{ backgroundColor: currentColor }} >Add Color</Button>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            disabled={paletteIsFull}
+            style={{ backgroundColor: paletteIsFull ? "gray" : currentColor }} >
+            {paletteIsFull ? "Palette Full" : "Add Color"}
+
+          </Button>
 
         </ValidatorForm>
 
@@ -232,7 +257,7 @@ const NewPaletteForm = (props) => {
         />
 
       </Main>
-    </Box>
+    </Box >
   )
 }
 
