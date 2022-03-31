@@ -221,7 +221,7 @@ const NewPaletteForm = (props) => {
         </Typography>
 
         <Button variant="contained" color="secondary" onClick={clearColors}> clear palette </Button>
-        <Button variant="contained" color="primary" onClick={addRandomColor}> disabled={paletteIsFull} Random color  </Button>
+        <Button variant="contained" color="primary" onClick={addRandomColor} disabled={paletteIsFull} > Random color  </Button>
 
         <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor} />
         <ValidatorForm onSubmit={addNewColor}>
