@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ColorPickerForm from './ColorPickerForm';
 import { Drawer } from '@mui/material';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -12,7 +13,6 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { ChromePicker } from 'react-color';
 import Button from '@mui/material/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import DraggableColorList from './DraggableColorList';
@@ -40,7 +40,6 @@ const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
     }),
   }),
 );
-
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -88,7 +87,15 @@ const NewPaletteForm = (props) => {
       newPaletteName: ""
     }
   )
+  const addNewColor = () => {
 
+        const newColor = {
+            color: currentColor,
+            name: formInfo.newColorName,
+        };
+        setColors([...colors, newColor]);
+    };
+  
   const removeColor = (colorName) => {
     setColors(colors.filter(color => color.name !== colorName))
 
@@ -103,7 +110,7 @@ const NewPaletteForm = (props) => {
   const addRandomColor = () => {
     const allColors = props.palettes.map(p => p.colors).flat();
     var rand = Math.floor(Math.random() * allColors.length);
-    const randomColor = allColors(rand);
+    const randomColor = allColors[rand];
     setColors([...colors, randomColor]);
 
   }
@@ -133,15 +140,9 @@ const NewPaletteForm = (props) => {
   const updateCurrentColor = (newColor) => {
 
     setCurrentColor(newColor.hex)
-  }
-  const addNewColor = () => {
+}
 
-    const newColor = {
-      color: currentColor,
-      name: formInfo.newColorName,
-    };
-    setColors([...colors, newColor]);
-  };
+
 
   const handleChange = (e) => {
 
@@ -152,6 +153,7 @@ const NewPaletteForm = (props) => {
 
     )
   }
+ 
   // const savePalette = () => {
   //   const newPalette={paletteName:"new test palette",colors:colors}
   //   props.savePalette(colors);
@@ -223,27 +225,15 @@ const NewPaletteForm = (props) => {
         <Button variant="contained" color="secondary" onClick={clearColors}> clear palette </Button>
         <Button variant="contained" color="primary" onClick={addRandomColor} disabled={paletteIsFull} > Random color  </Button>
 
-        <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor} />
-        <ValidatorForm onSubmit={addNewColor}>
-          <TextValidator
-            value={formInfo.newColorName}
-            name="newColorName"
-            onChange={handleChange}
-            validators={['required', 'isColorNameUnique']}
-            errorMessages={['this field is required', 'color name must be unique!']}
-          />
-
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            disabled={paletteIsFull}
-            style={{ backgroundColor: paletteIsFull ? "gray" : currentColor }} >
-            {paletteIsFull ? "Palette Full" : "Add Color"}
-
-          </Button>
-
-        </ValidatorForm>
+        <ColorPickerForm
+          formInfo={formInfo}
+          colors={colors}
+          palettes={props.palettes}
+          handleChange={handleChange}
+          addNewColor={addNewColor}
+          currentColor={currentColor}
+          updateCurrentColor={updateCurrentColor }
+        />
 
       </Drawer>
       <Main open={open} >
@@ -254,6 +244,7 @@ const NewPaletteForm = (props) => {
           removeColor={removeColor}
           axis='xy'
           onSortEnd={onSortEnd}
+          paletteIsFull={paletteIsFull}
         />
 
       </Main>
