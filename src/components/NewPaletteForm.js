@@ -143,10 +143,7 @@ const NewPaletteForm = (props) => {
     )
   }
 
-  // const savePalette = () => {
-  //   const newPalette={paletteName:"new test palette",colors:colors}
-  //   props.savePalette(colors);
-  // }
+  
   useEffect(() => {
     ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
 
@@ -174,7 +171,6 @@ const NewPaletteForm = (props) => {
           <Typography variant="h6" noWrap component="div">
             New Palette
           </Typography>
-          {/* ooooooo */}
           <Link to='/' className='palette___save-palette'>
             <Button variant='contained' color='secondary'>Go Back</Button>
           </Link>
@@ -183,7 +179,7 @@ const NewPaletteForm = (props) => {
             formInfo={formInfo}
             handleChange={handleChange}
             colors={colors}
-            savePalette={props.savePalette}
+            savePalette={props.palettes}
           />
 
         </Toolbar>
