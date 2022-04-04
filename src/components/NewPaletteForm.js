@@ -171,15 +171,12 @@ const NewPaletteForm = (props) => {
           <Typography variant="h6" noWrap component="div">
             New Palette
           </Typography>
-          <Link to='/' className='palette___save-palette'>
-            <Button variant='contained' color='secondary'>Go Back</Button>
-          </Link>
-
+          
           <PaletteMetaForm
             formInfo={formInfo}
             handleChange={handleChange}
             colors={colors}
-            savePalette={props.palettes}
+            savePalette={props.savePalette}
           />
 
         </Toolbar>

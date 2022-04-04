@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 import Dialog from '@mui/material/Dialog';
@@ -16,6 +17,7 @@ const PaletteMetaForm = (props) => {
     const handleSubmit = () => {
 
         let newName = formInfo.newPaletteName;
+
         const newPalette = {
             paletteName: newName,
             id: newName.toLowerCase().replace(/ /g, '-'),
@@ -25,6 +27,7 @@ const PaletteMetaForm = (props) => {
 
         savePalette(newPalette);
         history.push("/");
+
 
     }
 
@@ -46,11 +49,18 @@ const PaletteMetaForm = (props) => {
     })
 
     return (
-        <div>
+        
             <div>
-                <Button variant="contained" onClick={handleClickOpen}>
-                   save
-                </Button>
+                <div className="palette__navbar-right">
+                    <Link to='/' className='palette___save-palette'>
+                        <Button variant='contained' color='secondary'>Go Back</Button>
+                    </Link>
+
+                    <Button variant="contained" onClick={handleClickOpen}>
+                        save
+                    </Button>
+                </div>
+
                 <Dialog open={open} onClose={handleClose}>
 
                     <DialogTitle>Choose a Palettename</DialogTitle>
@@ -83,7 +93,7 @@ const PaletteMetaForm = (props) => {
             </div>
 
 
-        </div>
+        
     )
 }
 
