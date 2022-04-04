@@ -14,22 +14,17 @@ const ColorPickerForm = (props) => {
 
 
     
-    // const addNewColor = () => {
-
-    //     const newColor = {
-    //         color: currentColor,
-    //         name: formInfo.newColorName,
-    //     };
-    //     setColors([...colors, newColor]);
-    // };
+  
 
     return (
-        <div>
+        <div className="palette__side-color-picker">
             <ChromePicker color={currentColor} onChangeComplete={updateCurrentColor} />
             <ValidatorForm onSubmit={addNewColor}>
                 <TextValidator
+                className="palette__color-input"
                     value={formInfo.newColorName}
                     name="newColorName"
+                    placeholder="add your color"
                     onChange={handleChange}
                     validators={['required', 'isColorNameUnique']}
                     errorMessages={['this field is required', 'color name must be unique!']}

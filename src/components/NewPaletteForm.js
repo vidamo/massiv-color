@@ -19,7 +19,7 @@ import DraggableColorList from './DraggableColorList';
 import { arrayMove } from 'react-sortable-hoc';
 import '../palette.scss';
 
-const drawerWidth = 400;
+const drawerWidth = 250;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -89,13 +89,13 @@ const NewPaletteForm = (props) => {
   )
   const addNewColor = () => {
 
-        const newColor = {
-            color: currentColor,
-            name: formInfo.newColorName,
-        };
-        setColors([...colors, newColor]);
+    const newColor = {
+      color: currentColor,
+      name: formInfo.newColorName,
     };
-  
+    setColors([...colors, newColor]);
+  };
+
   const removeColor = (colorName) => {
     setColors(colors.filter(color => color.name !== colorName))
 
@@ -130,6 +130,7 @@ const NewPaletteForm = (props) => {
 
   }
 
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -140,7 +141,7 @@ const NewPaletteForm = (props) => {
   const updateCurrentColor = (newColor) => {
 
     setCurrentColor(newColor.hex)
-}
+  }
 
 
 
@@ -153,7 +154,7 @@ const NewPaletteForm = (props) => {
 
     )
   }
- 
+
   // const savePalette = () => {
   //   const newPalette={paletteName:"new test palette",colors:colors}
   //   props.savePalette(colors);
@@ -183,12 +184,15 @@ const NewPaletteForm = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Persistent drawer
+            New Palette
           </Typography>
-          <ValidatorForm onSubmit={handleSubmit}>
-            <TextValidator name="newPaletteName" label="palette name" value={formInfo.newPaletteName} onChange={handleChange} />
-            <Button variant="contained" color="primary" type='submit'>save palette</Button>
-            <Link to='/'>
+          <ValidatorForm className='palette__form-nav' onSubmit={handleSubmit}>
+            <div className='palette__form-input'>
+              <TextValidator name="newPaletteName" label="palette name" value={formInfo.newPaletteName} onChange={handleChange} />
+
+            </div>
+            <Button variant="contained" color="primary" type='submit' >save palette</Button>
+            <Link to='/' className='palette___save-palette'>
               <Button variant='contained' color='secondary'>Go Back</Button>
             </Link>
 
@@ -217,22 +221,23 @@ const NewPaletteForm = (props) => {
 
         </DrawerHeader>
         <Divider />
-        <Typography variant="h2">
+        <Typography className='palette__sidebar-title' variant="h2">
           Design your Palette
 
         </Typography>
 
-        <Button variant="contained" color="secondary" onClick={clearColors}> clear palette </Button>
-        <Button variant="contained" color="primary" onClick={addRandomColor} disabled={paletteIsFull} > Random color  </Button>
+        <Button className='palette__clear' variant="contained" color="secondary" onClick={clearColors}> clear palette </Button>
+        <Button variant="contained" color="primary" onClick={addRandomColor} disabled={paletteIsFull} className='palette__random'> Random color  </Button>
 
         <ColorPickerForm
+          className='palette__color-picker'
           formInfo={formInfo}
           colors={colors}
           palettes={props.palettes}
           handleChange={handleChange}
           addNewColor={addNewColor}
           currentColor={currentColor}
-          updateCurrentColor={updateCurrentColor }
+          updateCurrentColor={updateCurrentColor}
         />
 
       </Drawer>

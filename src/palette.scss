@@ -177,6 +177,51 @@ a{
             height:56%;
         }
     }
+    &__form-nav{
+        display: flex;
+        align-items: center;
+        margin-left: auto;
+    }
+    &__form-input{
+       margin-right: 5rem;
+       border-radius: 5px;
+    //    height: 30px;
+    }
+    &___save-palette{
+        margin-left: 10px;
+    }
+    &__sidebar-title{
+        font-size:1.3rem !important;
+        color: black;
+        padding: 10px 0;
+        display: block;
+        text-align: center;
+    }
+    &__clear{
+        margin-bottom: 10px !important ;
+        width: 14rem;
+        display: flex;
+        align-self: center;
+    }
+    &__side-color-picker{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        .chrome-picker{
+            margin-bottom: 10px;
+        }
+    }
+    &__random{
+        margin-bottom: 10px !important;
+        width: 14rem;
+        display: flex;
+        align-self: center;
+    }
+    &__color-input{
+        margin-bottom: 1rem!important;    
+        width: 14rem;
+    }
     
 }
 .newpalette-contain{
