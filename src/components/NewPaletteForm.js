@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import PaletteMetaForm from './PaletteMetaForm';
 import { Link } from 'react-router-dom';
 import ColorPickerForm from './ColorPickerForm';
 import { Drawer } from '@mui/material';
@@ -115,20 +116,7 @@ const NewPaletteForm = (props) => {
 
   }
 
-  const handleSubmit = () => {
 
-    let newName = formInfo.newPaletteName;
-    const newPalette = {
-      paletteName: newName,
-      id: newName.toLowerCase().replace(/ /g, '-'),
-      colors: colors
-
-    };
-
-    props.savePalette(newPalette);
-    props.history.push("/");
-
-  }
 
 
   const handleDrawerOpen = () => {
@@ -186,17 +174,17 @@ const NewPaletteForm = (props) => {
           <Typography variant="h6" noWrap component="div">
             New Palette
           </Typography>
-          <ValidatorForm className='palette__form-nav' onSubmit={handleSubmit}>
-            <div className='palette__form-input'>
-              <TextValidator name="newPaletteName" label="palette name" value={formInfo.newPaletteName} onChange={handleChange} />
+          {/* ooooooo */}
+          <Link to='/' className='palette___save-palette'>
+            <Button variant='contained' color='secondary'>Go Back</Button>
+          </Link>
 
-            </div>
-            <Button variant="contained" color="primary" type='submit' >save palette</Button>
-            <Link to='/' className='palette___save-palette'>
-              <Button variant='contained' color='secondary'>Go Back</Button>
-            </Link>
-
-          </ValidatorForm>
+          <PaletteMetaForm
+            formInfo={formInfo}
+            handleChange={handleChange}
+            colors={colors}
+            savePalette={props.savePalette}
+          />
 
         </Toolbar>
       </AppBar>

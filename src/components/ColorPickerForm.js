@@ -24,7 +24,7 @@ const ColorPickerForm = (props) => {
                 className="palette__color-input"
                     value={formInfo.newColorName}
                     name="newColorName"
-                    placeholder="add your color"
+                    placeholder="Color Name"
                     onChange={handleChange}
                     validators={['required', 'isColorNameUnique']}
                     errorMessages={['this field is required', 'color name must be unique!']}
