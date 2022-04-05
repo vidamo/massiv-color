@@ -10,7 +10,14 @@ import NewPaletteForm from './components/NewPaletteForm';
 import { useState } from "react";
 
 function App(props) {
-  const [palettes, setPalettes] = useState(seedColors);
+  const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
+  const [palettes, setPalettes] = useState(savedPalettes || seedColors);
+  const syncLocalStorage = () => {
+    // save palette to localStorage
+    window.localStorage.setItem("palettes", JSON.stringify(palettes));
+  }
+
+
 
   const findPalette = (id) => {
 
@@ -20,8 +27,8 @@ function App(props) {
   };
   const savePalette = (newPalette) => {
     setPalettes([...palettes, newPalette]);
+    syncLocalStorage();
   }
-
 
   return (
     <div className="App">
