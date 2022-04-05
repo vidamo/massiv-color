@@ -11,8 +11,8 @@ const styles = {
         position: "relative",
         overflow: "hidden",
         border: "1px solid #BDBDBD",
-        display:"flex",
-        flexDirection:"column",
+        display: "flex",
+        flexDirection: "column",
         "&:hover": {
             cursor: "pointer"
         }
@@ -21,23 +21,23 @@ const styles = {
         backgroundColor: "#dae1e4",
         height: "150px",
         width: "100%",
-        borderRadius:"2px",
-        overflow:"hidden"
+        borderRadius: "2px",
+        overflow: "hidden"
 
     },
     title: {
         fontSize: ".9rem",
         display: "flex",
-        justifyContent:"center",
+        justifyContent: "center",
         margin: "0",
         color: "#263238",
         paddingTop: "0.5rem",
         fontSize: ".9rem",
         position: "relative",
-        fontWeight:"500",
-        transition:".3s",
-        "&:hover":{
-          color:"#880E4F"  
+        fontWeight: "500",
+        transition: ".3s",
+        "&:hover": {
+            color: "#880E4F"
         },
 
 
@@ -50,11 +50,11 @@ const styles = {
         display: "inline-block",
         margin: "0 auto",
         position: "relative",
-        marginBottom:"-4px"
+        marginBottom: "-4px"
     }
 }
 const MiniPalette = (props) => {
-    const { classes, paletteName, colors } = props;
+    const { classes, paletteName, colors, emoji } = props;
 
     const miniColorBoxes = colors.map(color => (
         <span
@@ -71,7 +71,11 @@ const MiniPalette = (props) => {
     return (
         <div className={classes.root} onClick={props.handleClick}>
             <div className={classes.colors}> {miniColorBoxes}  </div>
-            <div className={classes.title}>{paletteName}</div>
+            <div className='palette__title-emoji'>
+                <div className={classes.title}>{paletteName}</div>
+                <span>{emoji}</span>
+            </div>
+
         </div >
     )
 

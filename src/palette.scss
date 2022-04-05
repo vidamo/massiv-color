@@ -224,6 +224,16 @@ a{
     &__navbar-right{
         margin-left: 20rem;
     }
+    &__title-emoji{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        span{
+            position: relative;
+            bottom: -6px;
+            margin-left: 4px;
+        }
+    }
     
 }
 .newpalette-contain{
