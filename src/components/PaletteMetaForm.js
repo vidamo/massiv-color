@@ -8,6 +8,10 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import { Picker } from 'emoji-mart';
+import 'emoji-mart/css/emoji-mart.css'
+
+
 
 const PaletteMetaForm = (props) => {
     const { formInfo, colors, handleChange, savePalette } = props;
@@ -69,6 +73,7 @@ const PaletteMetaForm = (props) => {
                         <DialogContent>
 
                             <DialogContentText>    Please Enter a Name for your palette,Make sure is unique</DialogContentText>
+                            <Picker/>
                             <div className='palette__form-input'>
                                 <TextValidator
                                     name="newPaletteName"
