@@ -29,13 +29,19 @@ function App() {
     setPalettes([...palettes, newPalette]);
 
   }
-
+  const deletePalette = (id) => {
+    setPalettes(palettes.filter(palette => palette.id !== id));
+    
+      localStorage.setItem('palettes', JSON.stringify(palettes));
+   
+    
+  }
 
   return (
     <div className="App">
       <Switch>
         <Route path="/palette/new" render={(routeProps) => <NewPaletteForm palettes={palettes} savePalette={savePalette} {...routeProps} />} />
-        <Route exact path='/' render={(routeProps) => <PaletteList palettes={palettes}{...routeProps} />} />
+        <Route exact path='/' render={(routeProps) => <PaletteList deletePalette={deletePalette} palettes={palettes}{...routeProps} />} />
         <Route
           exact
           path='/palette/:id'

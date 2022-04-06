@@ -56,7 +56,7 @@ const styles = {
     }
 }
 const MiniPalette = (props) => {
-    const { classes, paletteName, colors, emoji } = props;
+    const { classes, paletteName, colors, emoji,id } = props;
 
     const miniColorBoxes = colors.map(color => (
         <span
@@ -66,13 +66,21 @@ const MiniPalette = (props) => {
 
         </span>
 
-    ))
+    ));
+    const deletePalette = (e) => {
+        e.stopPropagation();
+        props.handleDelete(id);
+    }
+
 
     return (
         <div className={`${classes.root} mini-pl`} onClick={props.handleClick}>
-            <div className='palette__delete-palette'>
-                <DeleteIcon className='palette__delete-icon' />
-            </div>
+
+            <DeleteIcon
+                onClick={deletePalette}
+                className='palette__delete-icon'
+            />
+
             <div className={classes.colors}> {miniColorBoxes}  </div>
             <div className='palette__title-emoji'>
                 <div className={classes.title}>{paletteName}</div>
