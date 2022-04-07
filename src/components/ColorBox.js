@@ -5,6 +5,23 @@ import chroma from 'chroma-js';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = {
+    copyButton: {
+        color: props => chroma(props.background).luminance() <= 0.6 ? "white" : "rgba(0,0,0,.6)",
+        width: "100px",
+        height: " 30px",
+        position: "absolute",
+        left: "50%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
+        textAlign: "center",
+        outline: "none",
+        backgroundColor: "rgba(255, 255, 255, 0.3)",
+        border: "none",
+        fontSize: "13px",
+        textTransform: "uppercase",
+        lineHeight: "30px",
+        opacity: "0 "
+    },
     colorBox: {
 
         width: props => props.copied ? "100%" : "20%",
@@ -39,23 +56,7 @@ const styles = {
         padding: "0 15px"
 
     },
-    copyButton: {
-        color: props => chroma(props.background).luminance() <= 0.6 ? "white" : "rgba(0,0,0,.6)",
-        width: "100px",
-        height: " 30px",
-        position: "absolute",
-        left: "50%",
-        top: "50%",
-        transform: "translate(-50%, -50%)",
-        textAlign: "center",
-        outline: "none",
-        backgroundColor: "rgba(255, 255, 255, 0.3)",
-        border: "none",
-        fontSize: "13px",
-        textTransform: "uppercase",
-        lineHeight: "30px",
-        opacity: "0"
-    },
+ 
     copyOverlay: {
         opacity: "0",
         zIndex: "0",

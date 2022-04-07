@@ -50,11 +50,11 @@ const PaletteList = (props) => {
     return (
         <div className={classes.root}>
             <div className={classes.container}>
-                <div className={classes.nav}>
+                <div className={`{classes.nav} palette__palette-list-nav`}>
                     <h1>React Colors!</h1>
                     <Link to="/palette/new">Create Palette</Link>
                 </div>
-                <div className={classes.palettes}>
+                <div className={`${classes.palettes} palette__palette-list`}>
                     {props.palettes.map(palette => (
                         <MiniPalette 
                          handleDelete={props.deletePalette}

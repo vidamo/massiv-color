@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 
 const SingleColorPalette = (props) => {
     const [format, setFormat] = useState("hex");
+   
 
     const changeFormat = (val) => {
         setFormat(val)
@@ -44,12 +45,13 @@ const SingleColorPalette = (props) => {
             <div className='palette__colors '>
                 {ColorBoxes}
                 <div className='palette__color-box go-back '>
-                    <Link className='palette__back-button'>GO Back</Link>
+                    <Link  className='palette__back-button'>GO Back</Link>
                 </div>
             </div>
             <PaletteFooter emoji={props.palette.emoji}
                 paletteName={props.palette.paletteName} />
         </div>
+        
     )
 }
 

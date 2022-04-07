@@ -2,38 +2,116 @@
     .palette {
         &__color-box {
             width: 50% !important;
+
+            button {
+                opacity: 1 !important;
+            }
+
         }
+
+        &__palette-list {
+            grid-template-columns: repeat(2, 50%) !important;
+        }
+
+        &__palette-list-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+
+            h1 {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+
+
+
+@media(max-width:700px) {
+    .palette {
+        &__navbar-right {
+            margin-left: 10rem !important;
+            display: flex;
+            align-items: center;
+        }
+    }
+
+}
+
+@media(max-width:515px) {
+    .palette {
+
+        &___go-back {
+            font-size: 14px;
+        }
+
+        &__title-new {
+            font-size: 1rem !important;
+        }
+
+
     }
 }
 
 @media(max-width:500px) {
     .palette {
         &__color-box {
-            width: 100% !important; 
+            width: 100% !important;
             height: 10% !important;
+        }
+        &__palette-list {
+            grid-template-columns: repeat(1, 100%) !important;
+            grid-gap: 5px !important;
+            box-sizing: initial !important;
+
+
+        }
+
+        &__dragable {
+            width: 50% !important;
+        }
+
+        &__navbar-right {
+            // margin-left: 2rem !important;
+            display: flex;
+            flex-direction: column;
+
+            button {
+                width: 100% !important;
+            }
+
+
+
+
+        }
+
+        &___save-palette {
+            margin-right: 0 !important;
+            margin-bottom: 10px;
+        }
+
+    }
+}
+@media(max-width:441px) {
+    .palette{
+        &__palette-list-nav {
+        
+            flex-direction: column !important;
+            align-items: self-end !important;
+            h1{
+                padding: 0;
+                margin-bottom: 10px;
+            }
         }
     }
 }
+@media(max-width:429px) {
+    .palette {
+        &__navbar-right {
+            margin-left: 7rem !important;
 
-// `sm` applies to x-small devices (portrait phones, less than 576px)
-@media (max-width: 575.98px) { 
-    
- }
-
-// `md` applies to small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) { 
-    
- }
-
-// `lg` applies to medium devices (tablets, less than 992px)
-@media (max-width: 991.98px) { 
-    
- }
-
-// `xl` applies to large devices (desktops, less than 1200px)
-@media (max-width: 1199.98px) {  }
-
-// `xxl` applies to x-large devices (large desktops, less than 1400px)
-@media (max-width: 1399.98px) { 
-    
- }
+        }
+    }
+}

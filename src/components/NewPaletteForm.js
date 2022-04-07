@@ -168,7 +168,7 @@ const NewPaletteForm = (props) => {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
+          <Typography className='palette__title-new' variant="h6" noWrap component="div">
             New Palette
           </Typography>
           
