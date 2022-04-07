@@ -2,14 +2,17 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
 import { withStyles } from '@material-ui/core/styles';
+import bg from '../bg.svg';
 
 const styles = {
     root: {
-        backgroundColor: "#FCE4EC",
+        backgroundColor: "#fff",
+        backgroundImage:`url(${bg})`,
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center",
         height: "100%",
+        
 
     },
     container: {

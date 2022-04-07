@@ -61,6 +61,7 @@
             width: 100% !important;
             height: 10% !important;
         }
+
         &__palette-list {
             grid-template-columns: repeat(1, 100%) !important;
             grid-gap: 5px !important;
@@ -94,19 +95,22 @@
 
     }
 }
+
 @media(max-width:441px) {
-    .palette{
+    .palette {
         &__palette-list-nav {
-        
+            margin-bottom: 10px;
             flex-direction: column !important;
             align-items: self-end !important;
-            h1{
+
+            h1 {
                 padding: 0;
                 margin-bottom: 10px;
             }
         }
     }
 }
+
 @media(max-width:429px) {
     .palette {
         &__navbar-right {
