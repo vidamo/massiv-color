@@ -1,5 +1,6 @@
 import "./App.css";
 import { useEffect } from "react";
+import './Palette-res.scss';
 // Routes instead of Switch
 import { Route, Switch } from "react-router-dom";
 import Palette from "./components/Palette";
