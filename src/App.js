@@ -13,7 +13,8 @@ import { useState } from "react";
 
 function App() {
   const savedPalettes = JSON.parse(window.localStorage.getItem("palettes"));
-  const [palettes, setPalettes] = useState(savedPalettes || seedColors);
+  const [palettes, setPalettes] = useState( savedPalettes.length !==0  ? savedPalettes : seedColors);
+  console.log(window.localStorage.getItem("palettes"));
 
   useEffect(() => {
     localStorage.setItem('palettes', JSON.stringify(palettes));

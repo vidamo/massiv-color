@@ -3,16 +3,20 @@ import { Link } from 'react-router-dom';
 import MiniPalette from './MiniPalette';
 import { withStyles } from '@material-ui/core/styles';
 import bg from '../bg.svg';
+import {
+    CSSTransition,
+    TransitionGroup,
+} from 'react-transition-group';
 
 const styles = {
     root: {
         backgroundColor: "#fff",
-        backgroundImage:`url(${bg})`,
+        backgroundImage: `url(${bg})`,
         display: "flex",
         alignItems: "flex-start",
         justifyContent: "center",
         height: "100%",
-        
+
 
     },
     container: {
@@ -25,9 +29,9 @@ const styles = {
     nav: {
         width: "100%",
         marginBottom: "10px",
-        display:"flex",
-        alignItems:"center",
-        justifyContent:"space-between",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
         "& h1": {
             fontSize: "1.5rem",
             color: "#263238"
@@ -57,18 +61,28 @@ const PaletteList = (props) => {
                     <h1>React Colors!</h1>
                     <Link to="/palette/new">Create Palette</Link>
                 </div>
-                <div className={`${classes.palettes} palette__palette-list`}>
-                    {props.palettes.map(palette => (
-                        <MiniPalette 
-                         handleDelete={props.deletePalette}
-                          {...palette} handleClick={()=>goToPalette(palette.id)}
-                          key={palette.id}
-                          id={palette.id}
-                           />
+              
+                    <TransitionGroup className={`${classes.palettes} palette__palette-list`}>
+                        {props.palettes.map(palette => (
+                            <CSSTransition
+                            key={palette.id}
+                            timeout={500}
+                            classNames="fade"
+                            >
+                                <MiniPalette
+                                    handleDelete={props.deletePalette}
+                                    {...palette} handleClick={() => goToPalette(palette.id)}
+                                    key={palette.id}
+                                    id={palette.id}
+                                />
+                            </CSSTransition>
 
-                    ))
-                    }
-                </div>
+
+                        ))
+                        }
+                    </TransitionGroup>
+
+                
 
             </div>
 

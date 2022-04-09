@@ -10,7 +10,10 @@ import Button from '@mui/material/Button';
 
 const ColorPickerForm = (props) => {
     const { formInfo,handleChange,paletteIsFull,addNewColor,currentColor,updateCurrentColor } = props;
-    const [colors, setColors] = useState(props.palettes[0].colors);
+    // const [colors, setColors] = useState(props.palettes[0].colors);
+    const [colors, setColors] = useState(props.palettes.length!==0 && props.palettes[0]?.colors);
+
+    
 
 
     

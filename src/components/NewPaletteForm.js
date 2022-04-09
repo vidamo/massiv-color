@@ -78,7 +78,7 @@ const NewPaletteForm = (props) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [currentColor, setCurrentColor] = useState("teal");
-  const [colors, setColors] = useState(props.palettes[0].colors);
+  const [colors, setColors] = useState(props.palettes.length!==0 && props.palettes[0]?.colors);
   const paletteIsFull = colors.length >= defaultProps.maxColors;
 
 
@@ -152,7 +152,7 @@ const NewPaletteForm = (props) => {
       )
     });
   })
-
+console.log("dd",props);
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -226,6 +226,8 @@ const NewPaletteForm = (props) => {
         <DrawerHeader />
 
         <DraggableColorList
+                  palettes={props.palettes}
+
           colors={colors}
           removeColor={removeColor}
           axis='xy'
