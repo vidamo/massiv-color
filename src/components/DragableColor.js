@@ -20,7 +20,7 @@ const styles = {
         transition: "0.3s",
         "&:hover svg": {
             color: "white",
-            transform:"scale(1.5)"
+            transform: "scale(1.5)"
         }
     },
     boxContent: {
@@ -43,12 +43,14 @@ const styles = {
 }
 
 const DragableColor = SortableElement((props) => {
-    const { classes ,name,color,handleClick} = props;
+    const { classes, name, color, handleClick } = props;
     return (
         <div className={`${classes.root} palette__dragable`} style={{ backgroundColor: color }}>
             <div className={classes.boxContent}>
                 <span> {name}  </span>
-                <DeleteIcon className={classes.deleteIcon} onClick={handleClick} />
+                <DeleteIcon className={classes.deleteIcon} onClick={(e)=>{
+                    e.stopPropagation();handleClick()
+                }} />
 
             </div>
 

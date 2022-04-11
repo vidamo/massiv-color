@@ -3,9 +3,8 @@ import React, { useState } from "react";
 import { SortableContainer } from "react-sortable-hoc";
 import DragableColor from "./DragableColor";
 
-const DraggableColorList = SortableContainer(({ removeColor, palettes }) => {
-    const [colors, setColors] = useState(palettes.length !== 0 && palettes[0]?.colors);
-    console.log('aaaa',palettes);
+const DraggableColorList = SortableContainer(({ removeColor, palettes,colors }) => {
+    // const [colors, setColors] = useState(palettes.length !== 0 && palettes[0]?.colors);
 
     return (
         <div className='newpalette-contain'>
@@ -13,7 +12,6 @@ const DraggableColorList = SortableContainer(({ removeColor, palettes }) => {
                 <DragableColor
                     key={color}
                     palettes={palettes}
-
                     handleClick={() => removeColor(color.name)}
                     color={color.color}
                     name={color.name}
