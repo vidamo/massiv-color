@@ -72,7 +72,7 @@ const MiniPalette = (props) => {
         props.openDialog(id);
     }
 
-
+console.log("RENDERING :",paletteName);
     return (
         <div className={`${classes.root} mini-pl`} onClick={props.handleClick}>
 

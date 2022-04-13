@@ -45,7 +45,7 @@ const SingleColorPalette = (props) => {
             <div className='palette__colors '>
                 {ColorBoxes}
                 <div className='palette__color-box go-back '>
-                    <Link  className='palette__back-button'>GO Back</Link>
+                    <Link to="/"  className='palette__back-button'>GO Back</Link>
                 </div>
             </div>
             <PaletteFooter emoji={props.palette.emoji}

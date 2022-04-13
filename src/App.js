@@ -40,6 +40,9 @@ function App() {
 
   return (
     <div className="App">
+
+
+
       <Switch>
         <Route path="/palette/new" render={(routeProps) => <NewPaletteForm palettes={palettes} savePalette={savePalette} {...routeProps} />} />
         <Route exact path='/' render={(routeProps) => <PaletteList deletePalette={deletePalette} palettes={palettes}{...routeProps} />} />
@@ -64,6 +67,7 @@ function App() {
           exact
         />
       </Switch>
+
     </div>
   );
 }
